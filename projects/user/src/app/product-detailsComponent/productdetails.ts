@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-ProductDetails',
   imports: [NgxImageZoomModule, CommonModule],
-  templateUrl: './ProductDetails.html',
+  templateUrl: './Productdetails.html',
   styleUrl: './productDetails.scss',
 })
 export class ProductDetails {
@@ -25,7 +25,7 @@ export class ProductDetails {
     private activatedRoute: ActivatedRoute,
     private toast: ToastrService,
     private basketService: BasketService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.loadProduct();
   }
