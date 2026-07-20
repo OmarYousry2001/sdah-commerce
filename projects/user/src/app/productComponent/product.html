@@ -1,0 +1,86 @@
+@if(product){
+<div class="container mt-5">
+    <div class="row">
+        <h1 class="main-title">المنتج</h1>
+        <section class="col-md-3">
+
+            <div class="sidebar">
+                <h4 class="section-title">فرز</h4>
+                <div class="custom-select-wrapper mb-4">
+                    <select #SortSelected class="form-select" (change)="SortingByPrice($event)">
+
+                        @for (item of SortingOption; track $index) {
+                        <option [value]="item.value">{{item.name}}</option>
+
+                        }
+
+                    </select>
+                </div>
+
+                <h4 class="section-title">الفئات</h4>
+                <ul class="list-group custom-list-group">
+
+
+                    <li [ngClass]="(!ProductParam.categoryId)?'active':''" (click)="SelectedId(null)"
+                        class="list-group-item custom-list-item">
+                        الكل
+                    </li>
+
+                    <!--Category-->
+                    @for (item of Category; track $index) {
+                    <li [ngClass]="(item.id==ProductParam.categoryId)?'active':''" (click)="SelectedId(item.id)"
+                        class="list-group-item custom-list-item">
+                        {{item.name}}
+                    </li>
+                    }
+                </ul>
+            </div>
+
+        </section>
+        <section class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="paging-container">
+                    <span class="text-dark">المنتجات {{product.length}} من
+                        {{ProductParam.pageNumber*ProductParam.pageSize}}</span>
+                </div>
+
+
+                <div class="search-container">
+                    <div class="input-group search-bar">
+
+                        <input [(ngModel)]="searchInputValue" (keyup)="OnSearch(searchInputValue)"
+                            (keyup.enter)="OnSearch(searchInputValue)" type="text" class="form-control"
+                            placeholder="Search...">
+                        <input (click)="OnSearch(searchInputValue)" type="button" class="btn btn-success"
+                            value="Search">
+                        <input (click)="ResetValue()" type="button" class="btn btn-dark" value="Reset">
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row g-4">
+                @for (item of product; track $index) {
+                <ng-container>
+                    <app-ProductItem class="product-item col-lg-4 col-md-6" [Product]="item"></app-ProductItem>
+
+                </ng-container>
+                }
+
+
+                <div class="d-flex justify-content-center align-items-center">
+
+                    <pagination (pageChanged)="OnChangePage($event.page)" [itemsPerPage]="ProductParam.pageSize"
+                        [totalItems]="TotalCount" [boundaryLinks]="true"></pagination>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+}
+@else {
+<h2 style="text-align: center;"> جاري تحميل البيانات</h2>
+}

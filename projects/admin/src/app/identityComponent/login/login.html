@@ -1,0 +1,73 @@
+<div class="my-special-component">
+    <section class="pt-5">
+        <div class="form-container">
+
+
+            <h2 class="mb-4 text-primary fw-bold d-flex align-items-center">
+                <i class="fa-solid fa-right-to-bracket fa-2x text-primary mb-2"></i>
+                تسجيل الدخول
+            </h2>
+
+            <form [formGroup]="formGroup" (ngSubmit)="Submit()">
+
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" formControlName="email" [class.is-valid]="_email?.valid"
+                        [class.is-invalid]="_email?.invalid && _email?.touched">
+
+                    @if (_email?.hasError('required') && _email?.touched) {
+                    <span class="text-danger">البريد الإلكتروني مطلوب</span>
+                    }
+                    @else if (_email?.hasError('email') && _email?.touched) {
+                    <span class="text-danger">صيغة البريد الإلكتروني غير صحيحة. مثال: test@ts.ts</span>
+                    }
+                </div>
+
+                <div class="form-group position-relative">
+                    <label for="password">كلمة المرور</label>
+                    <input [type]="showCurrentPassword ? 'text' : 'password'" class="form-control"
+                        formControlName="password" [class.is-valid]="_password?.valid"
+                        [class.is-invalid]="_password?.invalid && _password?.touched">
+
+                    <!-- زر إظهار/إخفاء كلمة المرور -->
+                    <!-- <span class="toggle-password position-absolute end-0 top-50 translate-middle-y me-2">
+                        <i (click)="togglePassword() " class="fa-solid"
+                            [ngClass]="showCurrentPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </span> -->
+
+                    @if (_password?.hasError('required') && _password?.touched) {
+                    <span class="text-danger">كلمة المرور مطلوبة</span>
+                    }
+                    @else if (_password?.hasError('pattern') && _password?.touched) {
+                    <span class="text-danger">
+                        يجب أن تحتوي كلمة المرور على رقم واحد على الأقل،
+                        وحرف خاص واحد (# $ @ ! .)،
+                        وأن تكون بطول 8 أحرف على الأقل.
+                    </span>
+                    }
+                </div>
+
+
+                <div class="form-group form-check remember-me">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" formControlName="rememberMe">
+                    <label class="form-check-label" for="rememberMe"> تذكرني</label>
+                </div>
+
+
+                <div class="form-group">
+                    <button class="btn btn-info w-100" [disabled]="formGroup.invalid">
+                        تسجيل <i class="fa fa-sign-in"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
+    </section>
+
+
+</div>

@@ -1,0 +1,262 @@
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.basket-container {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.custom-table {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  width: 84%;
+  font-size: 1.1em; /* Larger font size for better readability */
+}
+
+.custom-table thead {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 20px;
+  vertical-align: middle;
+}
+
+.custom-table tbody tr {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  font-size: 10px; /* Smaller font size for descriptions */
+}
+
+.btn {
+  margin: 0 5px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.order-summary-container {
+  flex: 1;
+  position: fixed;
+  top: 150px; /* Adjust this value based on your header height */
+  right: 5px; /* Adjust this value based on your layout */
+  width: 300px; /* Adjust the width as needed */
+}
+.order-summary {
+  background-color: #f8f9fa;
+  color: #17a2b8;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+}
+
+.order-details {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+}
+
+/* From Uiverse.io by Ratinax */
+.radio-input {
+  display: flex;
+  scale: 0.15;
+  transform: rotate(180deg);
+}
+
+.star {
+  margin: 1em;
+  appearance: none;
+  --color: rgb(31, 29, 29);
+  border-left: 6.4721359549996em solid transparent;
+  border-right: 6.4721359549996em solid transparent;
+  border-bottom: 4em solid var(--color);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+.star:before {
+  content: "";
+  border-left: 6.4721359549996em solid transparent;
+  border-right: 6.4721359549996em solid transparent;
+  border-top: 4em solid var(--color);
+  position: absolute;
+  left: -6.4721359549996em;
+  transform: rotate(108deg);
+}
+
+.star:after {
+  content: "";
+  border-left: 6.4721359549996em solid transparent;
+  border-right: 6.4721359549996em solid transparent;
+  border-top: 4em solid var(--color);
+  position: absolute;
+  left: -6.4721359549996em;
+  transform: rotate(253deg);
+}
+
+.radio-input > .star:hover ~ .star,
+.radio-input > .star:hover,
+.radio-input > .star:checked ~ .star,
+.radio-input > .star:checked {
+  --color: yellow;
+}
+
+.radio-input > .star:checked ~ .star,
+.radio-input > .star:checked {
+  animation: grow 0.5s linear forwards;
+  transition: transform 0.3s;
+}
+
+@keyframes grow {
+  50% {
+    scale: 2;
+  }
+}
+
+.product-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background-color: #fff;
+  border-radius: 5px;
+}
+@media (max-width: 992px) {
+  .product-image {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-image {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+
+// hidden
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+.modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  background-color: white;
+  padding: 5rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  box-sizing: border-box;
+}
+.close-modal {
+  position: absolute;
+  top: 0.1rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.modals {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 35px;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.modal-text {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+.whatsapp-btn i {
+  font-size: 24px;
+}

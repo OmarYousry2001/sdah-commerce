@@ -1,0 +1,41 @@
+<div class="my-special-component shadow-lg rounded">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    
+    <h3 class="form-title mb-4 text-center">
+      <i class="fas fa-folder-open me-2"></i> إضافة تصنيف جديد
+    </h3>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label fw-bold text-primary">الاسم</label>
+      <input 
+        type="text" 
+        class="form-control"
+        formControlName="name" 
+        [class.is-valid]="_name?.valid && _name?.touched" 
+        [class.is-invalid]="_name?.invalid && _name?.touched">
+      
+      @if(_name?.hasError('required') && _name?.touched)
+      {
+        <div class="text-danger small">⚠️ الاسم مطلوب</div>
+      }
+      @if(_name?.hasError('minlength') && _name?.touched)
+      {
+        <div class="text-danger small">⚠️ الاسم يجب أن يكون على الأقل 2 حروف</div>
+      }
+      @if(_name?.hasError('maxlength') && _name?.touched)
+      {
+        <div class="text-danger small">⚠️ الاسم لا يمكن أن يزيد عن 50 حرف</div>
+      } 
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <button type="submit" [disabled]="formGroup.invalid" class="btn btn-custom">
+        <i class="fas fa-save me-2"></i> حفظ
+      </button>
+      <button type="button" (click)="goBack()" class="btn btn-outline-custom">
+        <i class="fas fa-arrow-left me-2"></i> رجوع
+      </button>
+    </div>
+    
+  </form>
+</div>

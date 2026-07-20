@@ -1,0 +1,63 @@
+<div class="my-special-component">
+    <div class="d-flex justify-content-between mb-5">
+        <button class="btn btn-primary" [routerLink]="['/admin']">
+            <i class="fas fa-home me-2"></i> الذهاب إلى لوحة التحكم
+        </button>
+        <button class="btn btn-primary" [routerLink]="['/admin/addOffer']">
+            <i class="fas fa-plus me-2"></i> إضافة عرض
+        </button>
+    </div>
+
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">الاسم</th>
+                <th scope="col">السعر قبل الخصم</th>
+                <th scope="col">السعر بعد الخصم</th>
+                <th scope="col">الوصف</th>
+                <th scope="col">الصورة</th>
+                <th scope="col">عدد المنتجات</th>
+                <th scope="col">إجراءات</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if(offers && offers.length > 0) {
+            @for (offer of offers; track $index) {
+            <tr>
+                <th>{{ $index + 1 }}</th>
+                <td> {{ offer.name }}</td>
+                <td><span class=""> {{ offer.priceBeforeDiscount | currency:'EGP' }}</span></td>
+                <td><span class="badge blue">{{ offer.discountedPrice | currency:'EGP' }}</span></td>
+                <td>{{ offer.description}}</td>
+                <td>
+                    <img [src]="urlImages + offer.imagePath" width="70" class="rounded shadow-sm img"
+                        alt="offer image" />
+                </td>
+
+                <td>{{ offer.countProduct}} </td>
+
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a [routerLink]="['/admin/addOffer', offer.id]" class="btn btn-sm btn-primary me-2">
+                            <i class="fas fa-edit"></i> تعديل
+                        </a>
+                        <button (click)="deleteOffer(offer.id)" class="btn btn-sm btn-danger me-2">
+                            <i class="fas fa-trash"></i> حذف
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            }
+            } @else {
+            <tr>
+                <td colspan="7" class="text-center text-muted py-3">
+                    لا توجد بيانات للعروض
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

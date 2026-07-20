@@ -1,0 +1,73 @@
+@if(product)
+{
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="main-img">
+                <lib-ngx-image-zoom [thumbImage]="urlImages+MainImage" [fullImage]="urlImages+MainImage"
+                    [magnification]="1.3" [enableScrollZoom]="true" [lensWidth]="200" [lensHeight]="200"
+                    [enableLens]="true"></lib-ngx-image-zoom>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="main-description px-2">
+                <div class="category text-bold">
+                    الفئه: {{product.categoryName}}
+                </div>
+                <div class="product-title text-bold my-3">
+                    {{product.name}}
+                </div>
+
+
+                <div class="price-area my-4">
+                    <p class="new-price text-bold mb-1">{{product.price | currency}}</p>
+
+                    <p class="text-danger">الكميه : {{quantity}}</p>
+                    <div>
+                        <button (click)="DecrementBasket()" class="btn btn-danger text-white">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        &nbsp;
+                        <button (click)="incrementBasket()" class="btn btn-dark text-white">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="buttons d-flex my-4">
+
+                    <div class=" block ">
+                        <button (click)=" AddToBasket()" class="shadow btn custom-btn">
+                            <i class="fa fa-shopping-cart"></i>
+                            الي السله</button>
+                    </div>
+
+                    <div class="block quantity">
+                        <input type="number" class="form-control" id="cart_quantity" value="1" min="0" max="5"
+                            placeholder="Enter email" name="cart_quantity">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="product-details my-4">
+                <p class="details-title text-color mb-1">المواصفات</p>
+                <p class="description">{{product.description}} </p>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<hr>
+
+
+}

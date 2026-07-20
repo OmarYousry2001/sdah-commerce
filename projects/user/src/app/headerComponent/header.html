@@ -1,0 +1,36 @@
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <a routerLink="/" class="logo-link">
+                    <img width="80" height="80" [src]="urlImages + settings?.logoPath" alt="Logo'"
+                        class="logo-img rotate-medium">
+                </a>
+            </div>
+
+            <!-- زر القائمة للموبايل -->
+            <button class="mobile-menu-btn" (click)="toggleMobileMenu()" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" [class.active]="isMobileMenuOpen">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    (click)="closeMobileMenu()">الرئيسية</a>
+                <a routerLink="/product" routerLinkActive="active" (click)="closeMobileMenu()">المنتجات</a>
+                <a routerLink="/aboutUs" routerLinkActive="active" (click)="closeMobileMenu()">من نحن</a>
+                <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">اتصل بنا</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <a class="nav-link" routerLink="/basket">
+                        <i [matBadge]="(count | async)?.basketItems?.length || 0" matBadgeColor="warn"
+                            class="material-icons">shopping_cart</i>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

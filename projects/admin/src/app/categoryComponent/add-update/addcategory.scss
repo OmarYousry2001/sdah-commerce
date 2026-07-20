@@ -1,0 +1,39 @@
+.my-special-component {
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-special-component form {
+  width: 100%;
+  max-width: 450px;
+}
+
+.form-title {
+  color: #31b2eb;
+  font-weight: bold;
+}
+
+.btn-custom {
+  background-color: #31b2eb;
+  border: none;
+  color: white;
+  transition: 0.3s;
+}
+.btn-custom:hover {
+  background-color: #2491c2;
+}
+
+.btn-outline-custom {
+  border: 2px solid #31b2eb;
+  color: #31b2eb;
+  transition: 0.3s;
+}
+.btn-outline-custom:hover {
+  background-color: #31b2eb;
+  color: white;
+}

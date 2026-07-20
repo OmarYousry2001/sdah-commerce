@@ -1,0 +1,107 @@
+<div class="contact-page container">
+
+    <!-- Header -->
+    <section class="contact-hero">
+        <h1>تواصل معنا</h1>
+        <p>يسعدنا سماع رأيك! لا تتردد في التواصل معنا في أي وقت.</p>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="info-card"> <i class="fas fa-map-marker-alt"></i>
+            <h3>موقعنا</h3>
+            <p> {{Settings.location}} </p>
+        </div>
+        <div class="info-card"> <i class="fas fa-envelope"></i>
+            <h3>راسلنا عبر البريد الإلكتروني</h3>
+            <p>{{Settings.email}}</p>
+        </div>
+        <div class="info-card"> <i class="fas fa-phone"></i>
+            <h3>اتصل بنا</h3>
+            <p>+2{{Settings.phone1}}</p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="form-container">
+            <h2>أرسل رسالة</h2>
+
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" placeholder="اسمك" required formControlName="name"
+                        [class.is-valid]="_name?.touched && _name?.valid"
+                        [class.is-invalid]="_name?.touched && _name?.invalid" />
+                    @if(_name?.hasError("required") && _name?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الاسم مطلوب</div>
+                    }
+
+                    @if(_name?.hasError("minlength") && _name?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الاسم يجب أن يكون على الأقل 2 حروف</div>
+                    }
+
+                    @if(_name?.hasError("maxlength") && _name?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الاسم لا يمكن أن يزيد عن 100 حرف</div>
+                    }
+
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="رقم الهاتف" required formControlName="phone"
+                        [class.is-valid]="_phone?.touched && _phone?.valid"
+                        [class.is-invalid]="_phone?.touched && _phone?.invalid" />
+
+                    @if(_phone?.hasError("required") && _phone?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الرقم مطلوب</div>
+                    }
+                    @if(_phone?.hasError("pattern") && _phone?.touched)
+                    {
+                    <div class="text-danger small">⚠️ رقم الهاتف غير صالح. يجب أن يكون رقمًا مصريًا مكونًا من 11 رقمًا
+                        ويبدأ بـ 01.</div>
+                    }
+
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="رسالتك" required formControlName="message"
+                        [class.is-valid]="_message?.touched && _message?.valid"
+                        [class.is-invalid]="_message?.touched && _message?.invalid"></textarea>
+
+                    @if(_message?.hasError("required") && _message?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الرسالة مطلوبة</div>
+                    }
+                    @else if(_message?.hasError("minlength") && _message?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الرسالة يجب أن تكون على الأقل 2 حروف</div>
+                    }
+                    @else if(_message?.hasError("maxlength") && _message?.touched)
+                    {
+                    <div class="text-danger small">⚠️ الرسالة لا يمكن أن تزيد عن 100 حرف</div>
+                    }
+                </div>
+                <button type="submit" [disabled]="formGroup.invalid" class="btn-submit">أرسل رسالة</button>
+            </form>
+        </div>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d605.931749823167!2d31.320648981822096!3d30.158928729153452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1760833049742!5m2!1sar!2seg"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="contact-social">
+        <h3>تابعنا</h3>
+        <div class="social-icons">
+            <a [href]="Settings.facebookLink"><i class="fab fa-facebook-f"></i></a>
+            <a [href]="Settings.facebookLink"><i class="fab fa-instagram"></i></a>
+            <a [href]="'https://wa.me/' + '2'" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+</div>

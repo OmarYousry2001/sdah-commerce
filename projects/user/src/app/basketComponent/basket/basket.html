@@ -1,0 +1,93 @@
+@if(basket ===null)
+{
+<div class="text-center tect-danger">
+    <h4>سلتك فارغة</h4>
+</div>
+}
+@else {
+
+
+
+<div class="container pt-4 flex-contaier ">
+
+    <div class="basket-container">
+        <table class="table table-hover custom-table">
+            <thead>
+                <tr class="bg-info text-white table-header ">
+                    <th>المنتج</th>
+                    <th>الصورة</th>
+                    <th>الوصف</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>الإجمالي</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of basket.basketItems; track $index) {
+
+                <tr>
+                    <td>
+                        <a [routerLink]="['/productDetails',item.id]" class="text-dark text-decoration-none">
+                            {{item.name}}
+                        </a>
+                    </td>
+                    <td>
+                        <img [src]="urlImages+item.imagePath" class="product-image img-fluid" alt="">
+                    </td>
+                    <td class="description">
+                        {{item.description}}
+                    </td>
+                    <td>{{item.price|currency}}</td>
+
+                    <td>
+                        <div class="d-flex justify-content-center  align-items-center">
+                            <div (click)="incrementQuantity(item)" class="btn btn-sm text-info">
+                                <i class=" fa fa-plus"></i>
+                            </div>
+                            <span class="mx-2">{{item.quantity}}</span>
+                            <div (click)="DecrementQuantity(item)" class="btn btn-sm text-danger">
+                                <i class="fa fa-minus"></i>
+                            </div>
+
+                        </div>
+                    </td>
+
+                    <td>
+                        {{item.price*item.quantity|currency}}
+                    </td>
+                    <td>
+                        <button (click)="RemoveBasket(item)" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <div class="order-summary-container">
+        <app-order-total (flag)="receiveFlag($event)"></app-order-total>
+
+    </div>
+</div>
+<div class="modals hidden">
+    <button class="close-modal" (click)="closeModal()">&times;</button>
+
+    <div class="modal-body text-center">
+        <h4 class="modal-title">تواصل على واتساب</h4>
+        <p class="modal-text">يمكنك الشراء عن طريق التواصل المباشر</p>
+
+        <a (click)="clickWatsApp()" [href]="'https://wa.me/2'+'01102638067'" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span>تواصل الآن</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="overlay hidden"></div>
+
+
+}

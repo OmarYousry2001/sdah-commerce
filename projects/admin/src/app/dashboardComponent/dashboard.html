@@ -1,0 +1,72 @@
+<div class="my-special-component">
+
+  <div class="container mt-5">
+    <div class="row g-4">
+
+      <!-- Category Card -->
+      <div class="col-md-6">
+        <div class="dashboard-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h5>الفئات</h5>
+          <p>إدارة جميع الفئات</p>
+          <a [routerLink]="['/admin/category']" class="btn btn-primary">ذهاب</a>
+        </div>
+      </div>
+
+
+      <!-- products Card -->
+      <div class="col-md-6 ">
+        <div class="dashboard-card">
+          <div class="icon-wrapper">
+
+            <i class="fa-solid fa-faucet"></i>
+          </div>
+          <h5>المنتجات</h5>
+          <p>إدارة جميع المنتجات</p>
+          <a [routerLink]="['/admin/product']" class="btn btn-primary">ذهاب</a>
+        </div>
+      </div>
+
+
+      <!-- Settings Card -->
+      <div class="col-md-6">
+        <div class="dashboard-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-cogs"></i>
+          </div>
+
+          <h5>الإعدادات</h5>
+          <p>إدارة جميع الإعدادات</p>
+          <a [routerLink]="['/admin/settings']" class="btn btn-primary">ذهاب</a>
+        </div>
+      </div>
+
+      <!-- Comments Card -->
+      <div class="col-md-6">
+        <div class="dashboard-card">
+          <div class="icon-wrapper ">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h5>التعليقات</h5>
+          <p> إدارة جميع التعليقات</p>
+          <a [routerLink]="['/admin/comment']" class="btn btn-primary">ذهاب</a>
+        </div>
+      </div>
+
+      <!-- Offer Card -->
+      <div class="col-md-6">
+        <div class="dashboard-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-gift"></i>
+          </div>
+          <h5>العروض</h5>
+          <p>إدارة جميع العروض</p>
+          <a [routerLink]="['/admin/offer']" class="btn btn-primary">ذهاب</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

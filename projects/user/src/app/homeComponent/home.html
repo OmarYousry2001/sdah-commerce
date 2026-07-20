@@ -1,0 +1,401 @@
+<div class="home-container">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span><i class="fa-solid fa-faucet"></i> ابو سداح </span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="title-line">مرحباً بكم في</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        {{settings?.aboutMe}}
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">+5K</div>
+                            <div class="stat-label">عميل سعيد</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">+500</div>
+                            <div class="stat-label">منتج</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">+3K</div>
+                            <div class="stat-label">طلب ناجح</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" (click)="getOffers()">
+                            <span> <i class="fas fa-gift"></i>استكشف العروض</span>
+                            <i class="material-icons">arrow_left</i>
+                        </button>
+                        <a [href]="'https://wa.me/'+settings?.phone1" target="_blank"
+                            class="btn btn-secondary whatsapp-btn">
+                            <span><i class="fab fa-whatsapp"></i>اتصل بنا الان</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="logo-container">
+                        <img [src]="urlImages + settings?.logoPath" alt="logo" class="hero-logo">
+                        <div class="logo-glow"></div>
+                        <div class="logo-orbits">
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit orbit-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="floating-elements">
+                        <div class="floating-card card-1">
+                            <div class="card-icon">
+                                <i class="material-icons">local_shipping</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">توصيل سريع</span>
+                                <span class="card-subtitle">خلال 24 ساعة</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-card card-2">
+                            <div class="card-icon">
+                                <i class="material-icons">security</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">آمن 100%</span>
+                                <span class="card-subtitle">دفاعات متقدمة</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-card card-3">
+                            <div class="card-icon">
+                                <i class="material-icons">build_circle</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">خدمة ما بعد البيع</span>
+                                <span class="card-subtitle">ضمان ودعم مستمر</span>
+                            </div>
+                        </div>
+
+
+                        <div class="floating-card card-4">
+                            <div class="card-icon">
+                                <i class="material-icons">verified</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">جودة مضمونة</span>
+                                <span class="card-subtitle">ضمان 3 سنوات</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-text">انتقل للأسفل</div>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">لماذا تختارنا؟</h2>
+                <p class="section-subtitle">نحن نضمن لك تجربة تسوق استثنائية مع مميزات حصرية</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" *ngFor="let feature of features; let i = index">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <i class="material-icons">{{feature.icon}}</i>
+                        </div>
+                        <div class="feature-badge">{{i + 1}}</div>
+                    </div>
+                    <h3 class="feature-title">{{feature.title}}</h3>
+                    <p class="feature-description">{{feature.description}}</p>
+                    <div class="feature-hover-effect"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">العروض الحصرية</h2>
+                <p class="section-subtitle">وفر مع عروضنا المميزة على الأدوات الصحية</p>
+            </div>
+
+            <div class="offers-slider-container">
+                <!-- عناصر التحكم في التمرير -->
+                <div class="slider-controls">
+                    <button class="slider-btn prev" (click)="prevOfferGroup()">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+
+                    <div class="slider-indicators">
+                        <div *ngFor="let group of [].constructor(totalOfferGroups); let i = index" class="indicator-dot"
+                            [class.active]="i === currentOfferGroupIndex" (click)="goToOfferGroup(i)">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" (click)="nextOfferGroup()">
+                        <i class="material-icons">chevron_left</i>
+                    </button>
+                </div>
+
+                <!-- زر التحكم في التمرير التلقائي -->
+                <div class="auto-slide-control">
+                    <button class="auto-slide-btn" (click)="toggleAutoSlide()" [class.paused]="!autoSlideEnabled">
+                        <i class="material-icons">{{ autoSlideEnabled ? 'pause' : 'play_arrow' }}</i>
+                        <span>{{ autoSlideEnabled ? 'إيقاف التمرير' : 'تشغيل التمرير' }}</span>
+                    </button>
+                </div>
+
+                <!-- عرض العروض -->
+                <div class="offers-slider-wrapper" id="Offers">
+                    <div class="offers-track"
+                        [style.transform]="'translateX(-' + (currentOfferGroupIndex * 100) + '%)'">
+                        <div class="offer-group" *ngFor="let group of [].constructor(totalOfferGroups); let i = index">
+                            <div class="offers-grid">
+                                <div class="offer-card" *ngFor="let offer of getOfferGroup(i)">
+                                    <div class="offer-badge">عرض خاص</div>
+                                    <div class="offer-image">
+                                        <img [src]="urlImages + offer.imagePath" [alt]="offer.name">
+                                        <div class="offer-overlay">
+                                            <button class="btn-view-offer">
+                                                <span>عرض التفاصيل</span>
+                                                <i class="material-icons">arrow_left</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="offer-content">
+                                        <h3 class="offer-title">{{offer.name}}</h3>
+                                        <p class="offer-description">{{offer.description}}</p>
+                                        <div class="offer-price">
+                                            <span class="discounted-price">{{offer.discountedPrice |
+                                                currency:'EGP'}}</span>
+                                            <span class="original-price">{{offer.priceBeforeDiscount |
+                                                currency:'EGP'}}</span>
+                                        </div>
+                                        <div class="offer-products">
+                                            <span class="products-count">{{offer.countProduct}} منتج في العرض</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-add-to-cart" (click)="closeModal()">
+                                            <i class="fab fa-whatsapp"></i> <span>يمكنك التواصل الان </span>
+
+
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modals hidden">
+            <button class="close-modal" (click)="closeModal()">&times;</button>
+            <div class="modal-body text-center">
+                <h4 class="modal-title">تواصل على واتساب</h4>
+                <p class="modal-text">يمكنك الشراء عن طريق التواصل المباشر</p>
+
+                <a [href]="'https://wa.me/'+settings?.phone1" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>تواصل الآن</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="overlay hidden"></div>
+    </section>
+
+
+
+    <!-- Products Preview -->
+    <section class="products-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">أحدث المنتجات</h2>
+                <p class="section-subtitle">اكتشف مجموعتنا المميزة من المنتجات الحصرية</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" *ngFor="let product of products">
+                    <div class="product-image">
+                        <img [src]="urlImages + product.imagePath" [alt]="product.name">
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">
+                                <i class="material-icons" (click)="showProduct(product.id)">visibility</i>
+                            </button>
+
+                        </div>
+                        <div class="product-badge">جديد</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">{{product.name}}</h3>
+                        <p class="product-price">{{product.price | currency:'EGP'}}</p>
+                        <div class="product-rating">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_half</i>
+                        </div>
+                        <div class="product-meta">
+                            <span class="arrival-date">وصل منذ {{getDaysAgo(product.createdDateUtc)}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Statistics Section  -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-background">
+                <div class="stats-overlay"></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item" *ngFor="let stat of statsArray">
+                    <div class="stat-icon">
+                        <i class="material-icons">{{stat.icon}}</i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">{{stat.number}}+</div>
+                        <div class="stat-label">{{stat.label}}</div>
+                    </div>
+                    <div class="stat-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">آراء عملائنا</h2>
+                <p class="section-subtitle">ماذا يقول عملاؤنا الراضين عن خدماتنا</p>
+            </div>
+
+            <div class="testimonials-container">
+                <div class="testimonials-slider-wrapper">
+                    <div class="testimonials-slider"
+                        [style.transform]="'translateX(' + (-currentTestimonialIndex * 100) + '%)'">
+                        <div class="testimonial-slide" *ngFor="let testimonial of comments; let i = index">
+                            <div class="testimonial-card">
+                                <div class="card-header">
+                                    <div class="quote-icon">
+
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">{{testimonial.message}}</p>
+                                </div>
+
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <div class="avatar-placeholder">
+                                            <i class="fa-regular fa-face-smile"></i>
+                                        </div>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4 class="author-name">{{testimonial.name}}</h4>
+                                        <p class="author-role">عميل راضٍ</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-decoration">
+                                    <div class="decoration-circle circle-1"></div>
+                                    <div class="decoration-circle circle-2"></div>
+                                    <div class="decoration-circle circle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn" (click)="prevTestimonial()" aria-label="الشهادة السابقة">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+
+                    <div class="slider-indicators">
+                        <span *ngFor="let testimonial of comments; let i = index"
+                            [class.active]="i === currentTestimonialIndex" (click)="goToTestimonial(i)"
+                            class="indicator-dot">
+                        </span>
+                    </div>
+
+                    <button class="slider-btn next-btn" (click)="nextTestimonial()" aria-label="الشهادة التالية">
+                        <i class="material-icons">chevron_left</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-background">
+                <div class="cta-overlay"></div>
+            </div>
+            <div class="cta-content">
+                <h2 class="cta-title">جاهز للبدء في رحلتك؟</h2>
+                <p class="cta-description">انضم إلى آلاف العملاء الراضين عن خدماتنا وابدأ تجربة تسوق استثنائية</p>
+                <div class="cta-actions">
+                    <button class="btn btn-outline-light" routerLink="/contact">
+                        <span>اتصل بنا</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

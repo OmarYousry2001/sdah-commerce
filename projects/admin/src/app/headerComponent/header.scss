@@ -1,0 +1,164 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  background: #ffffff;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Flexbox container */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Logo (Left) */
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #31b2eb;
+  letter-spacing: 1px;
+}
+
+/* Center nav */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 6rem;
+}
+@media(max-width:600px)
+{
+  .nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+ 
+}
+}
+/* Nav Links */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #31b2eb;
+}
+
+.text-primary {
+  color: #31b2eb !important;
+}
+
+/* Account Menu (Right) */
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  list-style: none;
+}
+
+.nav-item .nav-link {
+    position: relative;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+  color: #31b2eb;
+}
+
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute; 
+  right: 0; 
+  top: 100%; 
+  min-width: 180px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  z-index: 200; 
+}
+
+
+.dropdown-menu.show {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Dropdown Item */
+.dropdown-item {
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: #f1f1f1;
+}
+
+
+/* Burger Menu */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.burger span {
+  height: 3px;
+  width: 25px;
+  background: #333;
+  border-radius: 2px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav-center {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    display: none;
+  }
+  .nav-center.mobile-active {
+    display: flex;
+  }
+  .burger {
+    display: flex;
+  }
+}

@@ -1,0 +1,121 @@
+.my-special-component {
+  background: #f9f9f9;
+  color: #1a1a1a;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Card */
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #1a1a1a;
+  box-shadow: 0 6px 20px rgba(49, 178, 235, 0.12);
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: fadeInUp 0.7s ease both;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(49, 178, 235, 0.22);
+  border: 1px solid #31b2eb;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Titles */
+.dashboard-card h5 {
+  margin-top: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #31b2eb;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Icon */
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #31b2eb 0%, #4cc0f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(49, 178, 235, 0.25);
+  transition: box-shadow 0.2s;
+}
+
+.dashboard-card:hover .icon-wrapper {
+  box-shadow: 0 8px 24px rgba(49, 178, 235, 0.35);
+}
+
+.icon-wrapper i {
+  animation: rotateIcon 15s linear infinite;
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Buttons */
+.dashboard-card .btn-primary {
+  background: #4cc0f0;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(49, 178, 235, 0.2);
+}
+
+.dashboard-card .btn-primary:hover,
+.dashboard-card .btn-primary:focus {
+  background: #31b2eb;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(49, 178, 235, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .dashboard-card {
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .dashboard-card h5 {
+    font-size: 1.1rem;
+  }
+  .icon-wrapper {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+}

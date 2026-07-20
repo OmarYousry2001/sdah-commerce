@@ -1,0 +1,45 @@
+.my-special-component {
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  min-height: 100vh;
+  border-radius: 1rem;
+}
+
+.text-primary {
+  color: #31b2eb !important;
+}
+
+.btn-custom {
+  background-color: #31b2eb;
+  border: none;
+  color: white;
+  transition: 0.3s ease-in-out;
+  border-radius: 0.5rem;
+}
+.btn-custom:hover {
+  background-color: #2491c2;
+  color: #fff;
+}
+
+.table-header {
+  background-color: #31b2eb;
+  color: white;
+  font-weight: bold;
+}
+
+.table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.table th,
+.table td {
+  vertical-align: middle;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.img {
+  border: 1px solid #31b2eb;
+}

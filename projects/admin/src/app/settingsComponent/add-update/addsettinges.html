@@ -1,0 +1,120 @@
+<div class="my-special-component shadow-lg rounded">
+  <div class="container mt-4">
+    <h2 class="mb-4 text-primary fw-bold">
+      <i class="fas fa-cogs me-2"></i> تحديث الإعدادات
+    </h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+      <!-- Location -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">الموقع</label>
+        <input type="text" class="form-control" formControlName="location"
+          [class.is-valid]="_locationCtrl?.valid && _locationCtrl?.touched"
+          [class.is-invalid]="_locationCtrl?.invalid && _locationCtrl?.touched" />
+        <div class="text-danger small" *ngIf="_locationCtrl?.touched && _locationCtrl?.invalid">
+          <div *ngIf="_locationCtrl?.hasError('required')">الموقع مطلوب</div>
+          <div *ngIf="_locationCtrl?.hasError('minlength')">الحد الأدنى 2 حروف</div>
+          <div *ngIf="_locationCtrl?.hasError('maxlength')">الحد الأقصى 100 حرف</div>
+        </div>
+      </div>
+
+      <!-- Phone one -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">رقم الهاتف الاول </label>
+        <input type="text" class="form-control" formControlName="phone1"
+          [class.is-valid]="_phone1?.valid && _phone1?.touched"
+          [class.is-invalid]="_phone1?.invalid && _phone1?.touched" />
+        <div class="text-danger small" *ngIf="_phone1?.touched && _phone1?.invalid">
+          <div *ngIf="_phone1?.hasError('required')">>رقم الهاتف الاول مطلوب</div>
+        </div>
+      </div>
+
+      <!-- Phone two -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">رقم الهاتف الثاني </label>
+        <input type="text" class="form-control" formControlName="phone2"
+          [class.is-valid]="_phone2?.valid && _phone2?.touched"
+          [class.is-invalid]="_phone2?.invalid && _phone2?.touched" />
+        <div class="text-danger small" *ngIf="_phone2?.touched && _phone2?.invalid">
+          <div *ngIf="_phone2?.hasError('required')">>رقم الهاتف الثاني مطلوب</div>
+        </div>
+      </div>
+
+
+      <!-- landline-->
+      <div class="mb-3">
+        <label class="form-label fw-bold"> رقم الخط الارضي</label>
+        <input type="text" class="form-control" formControlName="landline"
+          [class.is-valid]="_landline?.valid && _landline?.touched"
+          [class.is-invalid]="_landline?.invalid && _landline?.touched" />
+        <div class="text-danger small" *ngIf="_landline?.touched && _landline?.invalid">
+          <div *ngIf="_landline?.hasError('required')">>رقم الخط الارضي مطلوب</div>
+        </div>
+      </div>
+
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">البريد الإلكتروني</label>
+        <input type="email" class="form-control" formControlName="email"
+          [class.is-valid]="_email?.valid && _email?.touched" [class.is-invalid]="_email?.invalid && _email?.touched" />
+        <div class="text-danger small" *ngIf="_email?.touched && _email?.invalid">
+          <div *ngIf="_email?.hasError('required')">البريد مطلوب</div>
+          <div *ngIf="_email?.hasError('email')">صيغة البريد غير صحيحة</div>
+        </div>
+      </div>
+
+      <!-- About Me -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">نبذة عني</label>
+        <textarea rows="3" class="form-control" formControlName="aboutMe"
+          [class.is-valid]="_aboutMe?.valid && _aboutMe?.touched"
+          [class.is-invalid]="_aboutMe?.invalid && _aboutMe?.touched"></textarea>
+        <div class="text-danger small" *ngIf="_aboutMe?.touched && _aboutMe?.invalid">
+          <div *ngIf="_aboutMe?.hasError('required')">هذا الحقل مطلوب</div>
+          <div *ngIf="_aboutMe?.hasError('minlength')">الحد الأدنى 10 حروف</div>
+          <div *ngIf="_aboutMe?.hasError('maxlength')">الحد الأقصى 1000 حرف</div>
+        </div>
+      </div>
+
+   
+
+          <!-- facebook link -->
+       <div class="mb-3">
+        <label class="form-label fw-bold">  لينك الفيسبوك</label>
+        <input type="text" class="form-control" formControlName="facebookLink"
+          [class.is-valid]="_facebookLink?.valid && _facebookLink?.touched"
+          [class.is-invalid]="_facebookLink?.invalid && _facebookLink?.touched" />
+        <div class="text-danger small" *ngIf="_facebookLink?.touched && _facebookLink?.invalid">
+          <div *ngIf="_facebookLink?.hasError('required')">  لينك الفيسبوك مطلوب</div>
+        </div>
+      </div>
+
+      <!-- Uploads -->
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-md-4 mb-3">
+          <label class="fw-bold">الشعار</label>
+          <div *ngIf="logoPreviewUrl" class="mt-2">
+            <img [src]="logoPreviewUrl" class="img-thumbnail shadow-sm rounded" style="max-height:150px" />
+          </div>
+          <input type="file" class="form-control mt-2" (change)="onFileSelected($event, 'logo')" />
+        </div>
+
+        
+      </div>
+
+      <!-- Submit -->
+      <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-custom" [disabled]="formGroup.invalid">
+          <i class="fas fa-save me-1"></i> حفظ
+        </button>
+        <button type="button" class="btn btn-outline-custom" (click)="goBack()">
+          <i class="fas fa-arrow-left me-1"></i> رجوع
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>

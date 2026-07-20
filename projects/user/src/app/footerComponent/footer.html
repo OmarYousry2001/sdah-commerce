@@ -1,0 +1,41 @@
+@if(Settings)
+{
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>عننا</h3>
+                <p>{{Settings?.aboutMe}}</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>روابط مختصره</h4>
+                <ul>
+                    <li><a routerLink="/">الرئيسيه</a></li>
+                    <li><a [routerLink]="['/product']">المنتجات</a></li>
+                    <li><a routerLink="/aboutUs">من نحن</a></li>
+                    <li><a routerLink="/contact"> اتصل بنا</a></li>
+
+
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li> {{Settings.email}} : الايميل</li>
+                    <li> الهاتف : {{Settings.phone1}} </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p> {{Settings.copyrightText}}</p>
+        </div>
+    </div>
+</footer>
+}
+@else {
+<h2 style="text-align: center;"> جاري تحميل البيانات</h2>
+}

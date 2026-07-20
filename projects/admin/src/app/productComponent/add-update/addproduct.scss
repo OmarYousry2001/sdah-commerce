@@ -1,0 +1,41 @@
+.my-special-component {
+  background-color: white;
+  background-color: #fff;
+  color: #000;
+  padding: 2rem;
+  min-height: 100vh;
+  border-radius: 1rem;
+}
+.text-primary {
+  color: #31b2eb !important;
+}
+
+
+
+.remove-img-btn:hover {
+  background: #dc3545;
+}
+.btn-custom {
+  background-color: #31b2eb;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+.btn-custom:hover {
+  background-color: #2491c2;
+  color: #fff;
+}
+
+.btn-outline-custom {
+  border: 2px solid #31b2eb;
+  color: #31b2eb;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+.btn-outline-custom:hover {
+  background-color: #31b2eb;
+  color: white;
+}

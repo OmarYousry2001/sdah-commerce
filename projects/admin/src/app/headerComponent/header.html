@@ -1,0 +1,63 @@
+<header class="navbar">
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="assets/images/logo.jpeg" alt="Logo" width="100px">
+    </div>
+
+    <!-- Burger Menu Button (Mobile) -->
+    <div class="burger" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
+
+    <!-- Nav Links -->
+    <div class="nav-center" [ngClass]="{'mobile-active': mobileMenuOpen}">
+      <nav class="nav-links">
+        <a [routerLink]="['/']" routerLinkActive="active text-primary" [routerLinkActiveOptions]="{ exact: true }">لوحه
+          التحكم</a>
+        <a [routerLink]="['/admin/category']" routerLinkActive="active text-primary">الفئات</a>
+        <a [routerLink]="['/admin/product']" routerLinkActive="active text-primary">المنتجات</a>
+        <a [routerLink]="['/admin/settings']" routerLinkActive="active text-primary">الإعدادات</a>
+        <a [routerLink]="['/admin/offer']" routerLinkActive="active text-primary">العروض</a>
+
+        <a [routerLink]="['/admin/comment']" routerLinkActive="active text-primary">التعليقات</a>
+
+      </nav>
+    </div>
+
+    <!-- Account Menu -->
+    <div class="nav-right">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a (click)="ToggleDropDown()" class="nav-link d-flex align-items-center dropdown-toggle" id="navbarDropdown"
+            role="button">
+            <i class="fas fa-user-circle fa-lg text-secondary me-1"></i>
+            <span *ngIf="userName" class="fw-semibold">{{ userName }}</span>
+          </a>
+          <div [ngClass]="(visible)?'show':''" class="dropdown-menu shadow-sm rounded-3 mt-2 p-2"
+            aria-labelledby="navbarDropdown">
+            @if(!isAuthenticated) {
+            <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/admin/login">
+              <i class="fa fa-sign-in text-primary"></i>
+              <span>تسجيل الدخول</span>
+            </a>
+            }
+            @else {
+            <button class="dropdown-item d-flex align-items-center gap-2" (click)="logout()">
+              <i class="fa fa-sign-out text-danger"></i>
+              <span>خروج</span>
+            </button>
+            <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/admin/changePassword">
+              <i class="fa fa-key text-primary"></i>
+              <span>تغير كلمه السر </span>
+            </a>
+            }
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

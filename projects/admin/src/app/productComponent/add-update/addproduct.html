@@ -1,0 +1,95 @@
+<div class="my-special-component">
+    <div class="container mt-4">
+
+        <h2 class="mb-4 text-primary fw-bold d-flex align-items-center">
+            <i class="fa-solid fa-faucet me-2"></i>
+            {{ isUpdate ? 'تعديل' : 'اضافه' }} منتج
+        </h2>
+
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label">الاسم</label>
+                <input type="text" class="form-control" formControlName="name"
+                    [class.is-valid]="_name?.valid && _name?.touched"
+                    [class.is-invalid]="_name?.invalid && _name?.touched" />
+
+                <div class="text-danger" *ngIf="_name?.touched && _name?.invalid">
+                    <small *ngIf="_name?.hasError('required')">الاسم مطلوب</small>
+                    <small *ngIf="_name?.hasError('minlength')">الحد الأدنى حرفان</small>
+                    <small *ngIf="_name?.hasError('maxlength')">الحد الأقصى 100 حرف</small>
+                </div>
+            </div>
+
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label class="form-label">السعر</label>
+                <input type="number" class="form-control" formControlName="price"
+                    [class.is-valid]="_price?.valid && _price?.touched"
+                    [class.is-invalid]="_price?.invalid && _price?.touched" />
+
+                <div class="text-danger" *ngIf="_price?.touched && _price?.invalid">
+                    <small *ngIf="_price?.hasError('required')">السعر مطلوب</small>
+                    <small *ngIf="_price?.hasError('min')">يجب أن يكون السعر أكبر من 0</small>
+                </div>
+            </div>
+
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label">الوصف</label>
+                <textarea rows="3" class="form-control" formControlName="description"
+                    [class.is-valid]="_description?.valid && _description?.touched"
+                    [class.is-invalid]="_description?.invalid && _description?.touched">
+  </textarea>
+
+                <div class="text-danger" *ngIf="_description?.touched && _description?.invalid">
+                    <small *ngIf="_description?.hasError('required')">الوصف مطلوب</small>
+                    <small *ngIf="_description?.hasError('minlength')">الحد الأدنى 10 أحرف</small>
+                    <small *ngIf="_description?.hasError('maxlength')">الحد الأقصى 1000 حرف</small>
+                </div>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+                <label class="form-label">التصنيف</label>
+                <select class="form-select" formControlName="categoryId"
+                    [class.is-valid]="_categoryId?.valid && _categoryId?.touched"
+                    [class.is-invalid]="_categoryId?.invalid && _categoryId?.touched">
+
+                    <option value="">-- اختر التصنيف --</option>
+
+                    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+                </select>
+
+                <div class="text-danger" *ngIf="_categoryId?.touched && _categoryId?.invalid">
+                    <small *ngIf="_categoryId?.hasError('required')">التصنيف مطلوب</small>
+                </div>
+            </div>
+
+
+            <!-- Upload Image -->
+            <div class="mb-3">
+                <label class="form-label">صورة المنتج</label>
+                <div *ngIf="imagePreview" class="mt-2">
+                    <img [src]="imagePreview" class="img-thumbnail shadow-sm rounded" style="max-height:150px" />
+                </div>
+                <input type="file" class="form-control" (change)="onFileSelected($event)" />
+            </div>
+
+
+            <!-- Submit -->
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-custom" [disabled]="formGroup.invalid">
+                    <i class="fas fa-save me-1"></i> حفظ
+                </button>
+                <button type="button" class="btn btn-outline-custom" (click)="goBack()">
+                    <i class="fas fa-arrow-left me-1"></i> رجوع
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

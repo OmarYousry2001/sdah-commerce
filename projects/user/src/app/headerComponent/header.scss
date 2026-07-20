@@ -1,0 +1,414 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  position: relative;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo h1 {
+  color: #4cc0f0;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* زر القائمة للموبايل */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 30px;
+  height: 30px;
+  justify-content: space-between;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav a:hover {
+  color: #4cc0f0;
+}
+
+.nav a.active {
+  color: #4cc0f0;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #4cc0f0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: #f5f5f5;
+  color: #4cc0f0;
+}
+
+/* 🎨 ألوان عامة */
+$primary: #4cc0f0;
+$secondary: #2d8bf0;
+
+/* 🌟 اللوجو */
+.logo {
+  display: inline-block;
+  text-align: center;
+
+  .logo-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: translateY(-3px) scale(1.05);
+
+      .logo-img {
+        animation-play-state: paused; /* إيقاف الدوران */
+        transform: scale(1.1) rotate(5deg);
+        border-color: $primary;
+        box-shadow: 0 8px 25px rgba($primary, 0.4),
+          0 0 0 4px rgba($primary, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.3);
+        filter: brightness(1.1) contrast(1.1);
+      }
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(1.02);
+      transition: all 0.1s ease;
+    }
+  }
+
+  .logo-img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 2px solid $primary;
+    object-fit: cover;
+    cursor: pointer;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    animation: rotate-medium 15s linear infinite; /* الوضع الافتراضي */
+
+    /* تدرج متحرك حول الصورة */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(
+        45deg,
+        $primary,
+        $secondary,
+        $primary,
+        #ff6b6b
+      );
+      background-size: 400% 400%;
+      z-index: -1;
+      opacity: 0;
+      animation: gradientShift 3s ease infinite;
+      transition: opacity 0.4s ease;
+    }
+
+    /* توهج داخلي */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 15px rgba($primary, 0.2);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* تأثير عند التحميل */
+    &.loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    /* أنواع الدوران */
+    &.rotate-slow {
+      animation: rotate-slow 30s linear infinite;
+    }
+    &.rotate-medium {
+      animation: rotate-medium 15s linear infinite;
+    }
+    &.rotate-fast {
+      animation: rotate-fast 8s linear infinite;
+    }
+    &.rotate-reverse {
+      animation: rotate-reverse 20s linear infinite;
+    }
+    &.rotate-bounce {
+      animation: rotate-bounce 10s ease-in-out infinite;
+    }
+    &.rotate-pulse {
+      animation: rotate-pulse 12s ease-in-out infinite;
+    }
+  }
+}
+
+/* 🔄 الأنيميشنات */
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-medium {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-fast {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-bounce {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.05);
+  }
+}
+
+@keyframes rotate-pulse {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 🌙 الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+  .logo-img {
+    border-color: #666;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 📱 الموبايل */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-content {
+    height: 70px;
+  }
+
+  .logo-img {
+    width: 60px;
+    height: 60px;
+    animation-duration: 25s; /* أبطأ قليلاً */
+  }
+
+  .logo-link:hover {
+    transform: none;
+
+    .logo-img {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba($primary, 0.3), 0 0 0 3px rgba($primary, 0.1);
+    }
+  }
+
+  /* إظهار زر القائمة وإخفاء التنقل العادي */
+  .mobile-menu-btn {
+    display: flex;
+    z-index: 101;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    gap: 0;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav a:last-child {
+    border-bottom: none;
+  }
+
+  .nav a.active::after {
+    display: none;
+  }
+
+  /* تحسين زر القائمة عند الفتح */
+  .nav.active + .mobile-menu-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav.active + .mobile-menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav.active + .mobile-menu-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+}
+
+/* 📱 الهواتف الصغيرة */
+@media (max-width: 480px) {
+  .header-content {
+    height: 60px;
+  }
+
+  .logo-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+}

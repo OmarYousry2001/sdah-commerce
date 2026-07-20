@@ -1,0 +1,44 @@
+@if(settings)
+{
+<section class="about-me">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="about-us-title mb-4">
+                    <div class="title-wrapper">
+                        <div class="icon"><i class="fa-solid fa-faucet"></i></div>
+                        <span class="title-text">من نحن</span>
+                        <div class="icon"><i class="fa-solid fa-faucet"></i></div>
+                    </div>
+                </h2>
+
+                <div class="about-text-container dark-theme">
+                    <div class="decorative-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+
+                    <div class="text-content">
+                        <p class="animated-text">
+                            {{settings.aboutMe}}
+                            {{settings.aboutMe}}
+                            {{settings.aboutMe}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img #aboutImage [src]="urlImages+settings?.logoPath" alt="E-commerce image"
+                    (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()" />
+            </div>
+        </div>
+    </div>
+</section>
+}
+@else
+{
+<h2 style="text-align: center;"> جاري تحميل البيانات</h2>
+}

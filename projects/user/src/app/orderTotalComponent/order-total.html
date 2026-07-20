@@ -1,0 +1,22 @@
+<div class="order-summary bg-light text-uppercase text-info p-3 text-center">
+    ملخص الطلب
+</div>
+<div class="order-details p-3">
+    <!-- <p style="font-style: italic;">سيتم إضافة تكلفة الشحن إلى السعر الإجمالي</p> -->
+    @if (basketTotals) {
+    <ng-container>
+        <ul class="list-unstyled mb-4">
+
+            <li class="d-flex justify-content-between border-bottom py-3">
+                <strong class="text-muted">إجمالي الطلب</strong>
+                <strong>{{basketTotals.total|currency}}</strong>
+            </li>
+        </ul>
+    </ng-container>
+    }
+    <button class="btn btn-order" (click)="sendFlag()">يمكنك الان طلب المنتج</button>
+
+
+
+
+</div>
